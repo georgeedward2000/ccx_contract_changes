@@ -96,6 +96,10 @@ contract ClearCryptos is ERC20Upgradeable, OwnableUpgradeable {
      * @dev Add Operational Address. This address represents an operations provider like a
      * smart contracts infrastructure (e.g. staking, flash loan etc.)
      *
+     * Requirements:
+     *
+     * - `_operationalAddress` cannot be the zero address.
+     *
      * @param _operationalAddress is a new operations provider's address.
      */
     function setOperational(address _operationalAddress) external virtual onlyOwner {
@@ -114,6 +118,10 @@ contract ClearCryptos is ERC20Upgradeable, OwnableUpgradeable {
 
     /**
      * @dev Add new Liquidity Provider / Decentralized Exchange.
+     *
+     * Requirements:
+     *
+     * - `_liquidityProvider` cannot be the zero address.
      *
      * @param _liquidityProvider is a new liquidity provider's address.
      */
@@ -134,6 +142,10 @@ contract ClearCryptos is ERC20Upgradeable, OwnableUpgradeable {
     /**
      * @dev Set wallet for collecting fees.
      *
+     * Requirements:
+     *
+     * - `_feeAddress` cannot be the zero address.
+     *
      * @param _feeAddress is the new address that collects the fees.
      */
     function setFeeAddress(address _feeAddress) external virtual onlyOwner {
@@ -145,6 +157,10 @@ contract ClearCryptos is ERC20Upgradeable, OwnableUpgradeable {
      * @dev Pause / Resume Trading.
      * This feature helps in mitigating unknown vulnerability exploits.
      *
+     * Requirements:
+     *
+     * - `_trading` needs to have a different value from `s_trading`.
+     *
      * @param _trading is the new trading state.
      */
     function setTrading(bool _trading) external virtual onlyOwner {
@@ -154,6 +170,10 @@ contract ClearCryptos is ERC20Upgradeable, OwnableUpgradeable {
 
     /**
      * @dev Pause / Resume transfers to initialize new liquidity provider.
+     *
+     * Requirements:
+     *
+     * - `_initializedLiquidityProvider` needs to have a different value from `s_initializedLiquidityProvider`.
      *
      * @param _initializedLiquidityProvider is the new liquidity provider initializing state.
      */
